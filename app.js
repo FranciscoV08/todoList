@@ -1,65 +1,63 @@
-const agregarTarea = document.querySelector('#input');
-const btn = document.querySelector('.btn-add');
-const tareasPendientes = document.querySelector('.list-ul ul')
 
-let tarea = "";
+//Variables
 
-eventosListener();
+const inputTarea = document.querySelector('.input');
+const btnAgregar = document.querySelector('.btn-add');
+const tareaUl = document.querySelector('.li-conteiner ul')
+const empty = document.querySelector('.empty');
 
-function eventosListener() {
-    // Eventos que registramos
-    //boton de +
-    btn.addEventListener('click', btnTarea);   
 
-    // input, como no es mucho codigo lo escribimos aqui
-    agregarTarea.addEventListener('input', (e) => { //Registra lo que escribimos en el Input
-        tarea = e.target.value;
-    });
-}
 
-//Crea los elementos Li y button
-function btnTarea(e) {
+//adEvenlistener
+btnAgregar.addEventListener('click', guardarValor);
+
+
+
+//Funciones 
+function guardarValor(e) {
     e.preventDefault();
-    const idContenedor = 0;
 
-    // Creamos el div que contenga los 2 elementos
-    const contenedorDiv = document.createElement('div');
-    contenedorDiv.classList.add(`${idContenedor}`  )
-
-    contenedorDiv.innerHTML = ` 
-    <li>${tarea}</li>
-
-    `;
-
-    //Creamos la lista que contendra e
-    // const texto = document.createElement('li');
-    // texto.textContent = `${tarea}`; 
-
-    //Creamos el botton
-    const deletBtn = document.createElement('button')
-    deletBtn.textContent = 'X'
-    deletBtn.classList.add('btn-delet')
-
-    //Agregamos al HTML
-    // contenedorDiv.appendChild(texto)
-    contenedorDiv.appendChild(deletBtn)
-
-    tareasPendientes.appendChild(contenedorDiv)
-
-
-
+    //Obtenemos el valor del inpur
+    const text = input.value;
+    if (text !== '') {
     
+        //Creamos el HTMl
+        const li = document.createElement('li');
+        const p = document.createElement('p');
+        
+        //Agregamos su contenido
+        p.textContent = text;
     
-    
+        //Agregamos a sus correspondiente
+        li.appendChild(p);
+        li.appendChild(btnDelete())
+        tareaUl.appendChild(li);
+        
+        input.value = '';
+        empty.style.display = 'none';
+    }
+
 }
 
-// if (tareasPendientes.children) {
-//     btnBorrarTarea()
-// }
-//  function btnBorrarTarea() {
-//      const btnX = document.querySelector('.btn-delet')
-//      btnX.addEventListener('click', () => { //Evento que borre la tarea
-       
-//      })
-//  }
+function btnDelete() {
+    const deleteBtn = document.createElement('button');
 
+    deleteBtn.textContent = 'X';
+    deleteBtn.className = 'btn-delete';
+
+    deleteBtn.addEventListener('click', (e) => {
+        const itemPadre = e.target.parentElement;
+        console.log(itemPadre)
+        tareaUl.removeChild(itemPadre);
+        
+        const items = document.querySelectorAll('li');
+        if(items.length === 0){
+            empty.style.display = 'block';
+        } 
+    })
+    return deleteBtn;
+}
+
+//Tarea
+//Guardar los datos en una base de datos como tarea 
+//Boton de Borrar todo, implementar un bucle y llamar en un listener mediante un bucle eliminar todo los li
