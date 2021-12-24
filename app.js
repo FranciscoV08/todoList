@@ -6,10 +6,14 @@ const btnAgregar = document.querySelector('.btn-add');
 const tareaUl = document.querySelector('.li-conteiner ul')
 const empty = document.querySelector('.empty');
 
+let texto = [];
 
 
 //adEvenlistener
 btnAgregar.addEventListener('click', guardarValor);
+
+
+//Objeto para identificar
 
 
 
@@ -20,7 +24,7 @@ function guardarValor(e) {
     //Obtenemos el valor del inpur
     const text = input.value;
     if (text !== '') {
-    
+        
         //Creamos el HTMl
         const li = document.createElement('li');
         const p = document.createElement('p');
@@ -35,15 +39,23 @@ function guardarValor(e) {
         
         input.value = '';
         empty.style.display = 'none';
+
+
+        gurdaDatosLocal()
+        
     }
+    
+    texto ={...texto, text};
+    console.log(texto);
 
 }
+
 
 function btnDelete() {
     const deleteBtn = document.createElement('button');
 
     deleteBtn.textContent = 'X';
-    deleteBtn.className = 'btn-delete';
+    deleteBtn.className = 'btn-delet';
 
     deleteBtn.addEventListener('click', (e) => {
         const itemPadre = e.target.parentElement;
@@ -57,6 +69,15 @@ function btnDelete() {
     })
     return deleteBtn;
 }
+
+
+
+function gurdaDatosLocal() {
+    localStorage.setItem('tarea',JSON.stringify(texto));
+    
+
+    console.log('Guardando datos...')
+}   
 
 //Tarea
 //Guardar los datos en una base de datos como tarea 
