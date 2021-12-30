@@ -28,7 +28,6 @@ function evenlistener() {
 
 }
 
-
 //Funciones
 function agregarTarea(e) {
     e.preventDefault();
