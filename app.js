@@ -65,8 +65,6 @@ function agregarTarea(e) {
 }
 
 function validacionTexto(error) {
-    //Identificamos el conteiner
-    const empty = document.querySelector('.empty');
 
     //Crear HTML 
     const p = document.createElement('p');
@@ -74,6 +72,7 @@ function validacionTexto(error) {
     p.classList.add('error');
     //agregamos Texto
     p.textContent = error;
+    //Identificamos el div
     const divValidacion = document.querySelector('.validacion');
     //agregamos al conteiner
     divValidacion.appendChild(p);
