@@ -7,7 +7,7 @@ const tareaUl = document.querySelector('.li-conteiner ul')
 const empty = document.querySelector('.empty');
 const deletAll = document.querySelector('.btn-deletToo');
 
-let texto = ['hola'];
+let texto = [];
 
 //Adevenlistener
 evenlistener()
