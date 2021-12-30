@@ -17,7 +17,7 @@ function evenlistener() {
 
     //Caundo el documento este listo
     document.addEventListener('DOMContentLoaded', () => {
-        texto = JSON.parse(localStorage.getItem('texto') || []); //Cuando recargue el documento traeremos los datos al Array, si no hay datos le asignamos un Array vacio
+        texto = JSON.parse(localStorage.getItem('texto') ) || []; //Cuando recargue el documento traeremos los datos al Array, si no hay datos le asignamos un Array vacio
         
         // Creamos el HTML del Array
         crearHTML(); 
