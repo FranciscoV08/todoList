@@ -68,8 +68,15 @@ form{
     color: white;
     border-radius: 0.4rem;
 }
+.btn-deletToo{
+    background-color: #DD4A48;
+    color: white;
+    border-radius: 0.4rem;
+    padding: 1.5rem ;
+    
+}
 
-.continer{
+.conteiner{
     background-color: white;
     border-radius: 2rem;
     text-align: center;
@@ -87,10 +94,19 @@ form{
     justify-content: center;
 }
 
+.error{
+    background-color: red;
+    color: white;
+    margin: 0 auto;
+    padding:  2rem;
+    max-width: 30rem;
+    text-align: center;
+}
+
 @media (min-width: 800px ) {
     
 
-    .continer{
+    .conteiner{
         display: flex;
         justify-content: space-around;
 
@@ -101,5 +117,6 @@ form{
         margin: 5rem auto;
         padding: 2rem 0;
     }
+
     
 }
